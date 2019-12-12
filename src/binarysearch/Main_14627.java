@@ -22,7 +22,7 @@ public class Main_14627 {
         ++max;
         while (min + 1 < max) {
             long mid = (min + max) / 2;
-            long sum = 0;
+            int sum = 0;
             for (int i = 0; i < S; ++i) {
                 sum += L[i] / mid;
             }
