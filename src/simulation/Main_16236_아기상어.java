@@ -1,9 +1,9 @@
-package com.ssafy.algo;
+package simulation;
 
 import java.io.*;
 import java.util.*;
 
-public class Main16236_아기상어 {
+public class Main_16236_아기상어 {
 	
 	public static int ans, n, s;
 	public static int[][] aqua;

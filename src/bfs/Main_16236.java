@@ -1,9 +1,9 @@
-package com.ssafy.algo;
+package bfs;
 
 import java.io.*;
 import java.util.*;
 
-public class Main16236 {
+public class Main_16236 {
 	
 	public static int ans, n, s;
 	public static int[][] aqua;

@@ -1,9 +1,9 @@
-package com.ssafy.algo;
+package dfs;
 
 import java.io.*;
 import java.util.*;
 
-public class Main1976_여행가자_서울10반_이준범 {
+public class Main_1976_여행가자 {
 	
 	public static int n;
 	public static int[][] graph;

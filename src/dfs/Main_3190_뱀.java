@@ -3,7 +3,7 @@ package com.ssafy.algo;
 import java.io.*;
 import java.util.*;
 
-public class Main3190_뱀 {
+public class Main_3190_뱀 {
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

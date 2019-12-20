@@ -1,8 +1,8 @@
-package com.ssafy.algo;
+package permutation;
 
 import java.util.Scanner;
 
-public class Main1169_주사위던지기1_서울10반_이준범 {
+public class Main_1169_주사위던지기1 {
 	public static int n, r, caseCount, data[];
 	
 	public static void permutation(int before, int count) {

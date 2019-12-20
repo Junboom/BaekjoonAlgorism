@@ -1,8 +1,8 @@
-package com.ssafy.algo;
+package backtracking;
 
 import java.util.Scanner;
 
-public class Main6987_월드컵 {
+public class Main_6987_월드컵 {
 	public static void main(String[] args) {
 
 		int country = 6;

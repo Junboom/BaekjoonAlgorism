@@ -1,8 +1,8 @@
-package com.ssafy.algo;
+package simulation;
 
 import java.util.Scanner;
 
-public class Main6987 {
+public class Main_6987 {
 	public static void main(String[] args) {
 
 		int country = 6;

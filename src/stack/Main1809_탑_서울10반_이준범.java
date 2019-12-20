@@ -1,4 +1,4 @@
-package com.ssafy.algo;
+package stack;
 
 import java.io.*;
 
