@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/BaekjoonAlgorithm.iml" filepath="$PROJECT_DIR$/.idea/BaekjoonAlgorithm.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/BaekjoonAlgorithm.iml" filepath="$PROJECT_DIR$/BaekjoonAlgorithm.iml" />
->>>>>>> db3c4f564e60601d9be57ad61c426ca3334bcafa
     </modules>
   </component>
 </project>
