@@ -1,7 +1,9 @@
+package simulation;
+
 import java.io.*;
 import java.util.*;
 
-public class Main_17822_¿øÆÇµ¹¸®±â {
+public class Main_17822_ì›íŒëŒë¦¬ê¸° {
 
 	public static int N, M, T;
 	
