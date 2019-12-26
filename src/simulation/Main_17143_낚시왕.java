@@ -1,7 +1,9 @@
+package simulation;
+
 import java.io.*;
 import java.util.*;
 
-public class Main_17143_³¬½Ã¿Õ {
+public class Main_17143_ë‚šì‹œì™• {
 	
 	public static int R, C, M;
 	public static int[][] D = { {}, {-1, 0}, {1, 0}, {0, 1}, {0, -1} };
