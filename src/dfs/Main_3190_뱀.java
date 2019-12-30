@@ -1,4 +1,4 @@
-package com.ssafy.algo;
+package dfs;
 
 import java.io.*;
 import java.util.*;
