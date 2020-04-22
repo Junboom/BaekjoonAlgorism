@@ -2,7 +2,7 @@ package stack;
 
 import java.io.*;
 
-public class Main1809_탑_서울10반_이준범 {
+public class Main1809_탑 {
 	
 	public static void main(String[] args) throws Exception {
 		System.setIn(new FileInputStream("res/input1809.txt"));
