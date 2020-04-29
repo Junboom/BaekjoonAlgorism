@@ -1,43 +1,42 @@
-package simulation;
+package combination;
 
 import java.io.*;
 import java.util.*;
-import java.util.Map.*;
 
 public class Main_15686_치킨배달 {
 	
 	public static int ans, N, M;
 	public static List<int[]> homes, bbqs;
-	public static Map<String, Integer> dists;
-	public static List<Entry<String, Integer>> list;
 	public static boolean[] v;
 	
-	public static void comb(int cnt) {
+	public static void comb(int cnt, int idx) {
 		if (cnt == M) {
 			int distAll = 0;
 			
 			for (int i = 0; i < homes.size(); ++i) {
-				for(Entry<String, Integer> entry : list) {
-					String dist = entry.getKey();
-					StringTokenizer st = new StringTokenizer(dist);
-					st.nextToken();
-					int bbq = Integer.parseInt(st.nextToken());
-					if (!v[bbq]) continue;
+				int[] home = homes.get(i);
+				int min = 987654321;
+				
+				for (int j = 0; j < bbqs.size(); ++j) {
+					if (!v[j]) continue;
+					int[] bbq = bbqs.get(j);
 					
-					distAll += entry.getValue();
-					break;
+					int dist = Math.abs(home[0] - bbq[0]) + Math.abs(home[1] - bbq[1]);
+					min = min > dist ? dist : min;
 				}
+				
+				distAll += min;
 			}
 			
 			ans = ans > distAll ? distAll : ans;
 			return;
 		}
 		
-		for (int i = 0; i < bbqs.size(); ++i) {
+		for (int i = idx; i < bbqs.size(); ++i) {
 			if (v[i]) continue;
 			
 			v[i] = true;
-			comb(cnt + 1);
+			comb(cnt + 1, i + 1);
 			v[i] = false;
 		}
 	}
@@ -50,7 +49,6 @@ public class Main_15686_치킨배달 {
 		M = Integer.parseInt(st.nextToken());
 		homes = new ArrayList<>();
 		bbqs = new ArrayList<>();
-		dists = new HashMap<>();
 		
 		for (int i = 0; i < N; ++i) {
 			st = new StringTokenizer(br.readLine());
@@ -61,27 +59,8 @@ public class Main_15686_치킨배달 {
 			}
 		}
 		
-		for (int i = 0; i < homes.size(); ++i) {
-			int[] home = homes.get(i);
-			
-			for (int j = 0; j < bbqs.size(); ++j) {
-				int[] bbq = bbqs.get(j);
-				
-				int dist = Math.abs(home[0] - bbq[0]) + Math.abs(home[1] - bbq[1]);
-				dists.put(i + " " + j, dist);
-			}
-		}
-		
-		list = new ArrayList<>(dists.entrySet());
-		
-		Collections.sort(list, new Comparator<Entry<String, Integer>>() {
-			public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-				return o1.getValue().compareTo(o2.getValue());
-			}
-		});
-		
 		v = new boolean[bbqs.size()];
-		comb(0);
+		comb(0, 0);
 		
 		System.out.println(ans);
 	}
