@@ -1,80 +1,75 @@
 #include <iostream>
-#include <map>
+#include <vector>
+#include <queue>
+
+#define endl    '\n'
+#define INF     987654321
+#define MAX     20010
 
 using namespace std;
 
-int INF = 987654321;
-map<int, int> graph;
-int dist[];
-bool check[];
-
-int find(int n)
+struct node
 {
-    int min = INF;
-    int pos = 0;
+    int next, weight;
 
-    for (int i = 0; i < n; ++i)
+    bool operator<(const node& r) const
     {
-        if (dist[i] < min && !check[i])
-        {
-            min = dist[i];
-            pos = i;
-        }
+        return r.weight < weight;
     }
+};
 
-    return pos;
-}
-
-void solve(int start, int n)
-{
-    for (int i = 0; i < n; ++i)
-    {
-        dist[i] = graph[20000 * start + i];
-        check[i] = false;
-    }
-
-    check[start] = true;
-
-    for (int i = 0; i < n - 1; ++i)
-    {
-        int u = find(i);
-        check[u] = true;
-
-        for (int w = 0; w < n; ++w)
-        {
-            if (!check[w] && dist[u] + graph[20000 * u + w] < dist[w])
-                dist[w] = dist[u] + graph[20000 * u + w];
-        }
-    }
-}
+int ans, V, E, K;
+int dist[MAX];
+bool visit[MAX];
+vector<pair<int, int>> vec[MAX];
+priority_queue<node> pq;
 
 int main()
 {
-    int V, E, K;
-    
-    graph = new HashMap<>();
-    dist = new int[V];
-    check = new boolean[V];
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    cin >> V >> E >> K;
+
+    fill(dist + 1, dist + V + 1, INF);
+    dist[K] = 0;
 
     for (int i = 0; i < E; ++i)
     {
-        st = new StringTokenizer(br.readLine());
-        int u = Integer.parseInt(st.nextToken()) - 1;
-        int v = Integer.parseInt(st.nextToken()) - 1;
-        int w = Integer.parseInt(st.nextToken());
-        graph.put(20000 * u + v, w);
+        int u, v, w;
+        cin >> u >> v >> w;
+        vec[u].push_back({ v, w });
     }
 
-    solve(0, V);
+    pq.push({ K, 0 });
 
-    StringBuilder sb = new StringBuilder();
-    sb.append("0\n");
-    for (int i = 0; i < V - 1; ++i)
+    while (!pq.empty())
     {
-        if (dist[(i + K) % V] == INF)
-            sb.append("INF\n");
-        else
-            sb.append(dist[(i + K) % V]).append("\n");
+        int next = pq.top().next;
+        int weight = pq.top().weight;
+        pq.pop();
+
+        if (visit[next])
+            continue;
+
+        visit[next] = true;
+
+        for (auto next_node : vec[next])
+        {
+            if (dist[next] + next_node.second < dist[next_node.first])
+            {
+                dist[next_node.first] = dist[next] + next_node.second;
+                pq.push({ next_node.first, dist[next_node.first] });
+            }
+        }
     }
-    bw.write(sb.toString());
+
+    for (int i = 1; i <= V; ++i)
+    {
+        if (dist[i] == INF)
+            cout << "INF" << endl;
+        else
+            cout << dist[i] << endl;
+    }
 }

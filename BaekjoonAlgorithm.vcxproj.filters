@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\simulation\Main_12100_2048(Easy).cpp">
+    <ClCompile Include="Main_1753_최단경로.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
