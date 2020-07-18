@@ -282,22 +282,6 @@ public class Main_19235_모노미노도미노 {
 			
 			rightSolve(domino[0], domino[1]);
 			downSolve(domino[0], domino[2]);
-			
-			System.out.println(i + 1);
-			
-			for (int j = 0; j < 4; ++j) {
-				for (int k = 2; k < 6; ++k)
-					System.out.print(rightMap[j][k]);
-				System.out.println();
-			}
-			System.out.println();
-
-			for (int j = 2; j < 6; ++j) {
-				for (int k = 0; k < 4; ++k)
-					System.out.print(downMap[j][k]);
-				System.out.println();
-			}
-			System.out.println();
 		}
 	}
 	
