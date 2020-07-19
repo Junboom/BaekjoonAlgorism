@@ -162,32 +162,31 @@ public class Main_19235_모노미노도미노 {
 			
 			break;
 		}
-		
-		rightBoom();
-		
-		do {
-			boolean z = false;
-			boolean o = false;
-			
-			for (int i = 0; i < 4; ++i) {
-				if (rightMap[i][0] != 0) z = true;
-				if (rightMap[i][1] != 0) o = true;
-			}
-			
-			if (z) {
-				for (int j = 5; j >= 4; --j) {
-					for (int i = 0; i < 4; ++i)
-						rightMap[i][j] = 0;
-				}
-			}
-			else if (o) {
-				for (int i = 0; i < 4; ++i)
-					rightMap[i][5] = 0;
-			}
-			
+
+		while (rightBoom())
 			rightMove();
-			
-		} while (rightBoom());
+		
+		boolean z = false;
+		boolean o = false;
+		
+		for (int i = 0; i < 4; ++i) {
+			if (rightMap[i][0] != 0) z = true;
+			if (rightMap[i][1] != 0) o = true;
+		}
+		
+		if (z) {
+			for (int j = 5; j >= 4; --j) {
+				for (int i = 0; i < 4; ++i)
+					rightMap[i][j] = 0;
+			}
+		}
+		else if (o) {
+			for (int i = 0; i < 4; ++i)
+				rightMap[i][5] = 0;
+		}
+		
+		do rightMove();
+		while (rightBoom());
 	}
 	
 	public static void downSolve(int t, int y) {
@@ -249,40 +248,30 @@ public class Main_19235_모노미노도미노 {
 			break;
 		}
 		
-		downBoom();
-		
-		do {
-			boolean z = false;
-			boolean o = false;
-			
-			for (int i = 0; i < 4; ++i) {
-				if (downMap[0][i] != 0) z = true;
-				if (downMap[1][i] != 0) o = true;
-			}
-			
-			if (z) {
-				for (int i = 5; i >= 4; --i) {
-					for (int j = 0; j < 4; ++j)
-						downMap[i][j] = 0;
-				}
-			}
-			else if (o) {
-				for (int i = 0; i < 4; ++i)
-					downMap[5][i] = 0;
-			}
-			
+		while (downBoom())
 			downMove();
-			
-		} while (downBoom());
-	}
-	
-	public static void move(List<int[]> dominos) {
-		for (int i = 0; i < dominos.size(); ++i) {
-			int[] domino = dominos.get(i);
-			
-			rightSolve(domino[0], domino[1]);
-			downSolve(domino[0], domino[2]);
+		
+		boolean z = false;
+		boolean o = false;
+		
+		for (int i = 0; i < 4; ++i) {
+			if (downMap[0][i] != 0) z = true;
+			if (downMap[1][i] != 0) o = true;
 		}
+		
+		if (z) {
+			for (int i = 5; i >= 4; --i) {
+				for (int j = 0; j < 4; ++j)
+					downMap[i][j] = 0;
+			}
+		}
+		else if (o) {
+			for (int i = 0; i < 4; ++i)
+				downMap[5][i] = 0;
+		}
+		
+		do downMove();
+		while (downBoom());
 	}
 	
 	public static int solve() {
@@ -311,7 +300,6 @@ public class Main_19235_모노미노도미노 {
 		downMap = new int[6][4];
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine().trim());
-		List<int[]> dominos = new ArrayList<>();
 		
 		for (int i = 0; i < N; ++i) {
 			StringTokenizer st = new StringTokenizer(br.readLine().trim());
@@ -319,10 +307,9 @@ public class Main_19235_모노미노도미노 {
 			int x = Integer.parseInt(st.nextToken());
 			int y = Integer.parseInt(st.nextToken());
 			
-			dominos.add(new int[] {t, x, y});
+			rightSolve(t, x);
+			downSolve(t, y);
 		}
-		
-		move(dominos);
 		
 		System.out.println(answer);
 		System.out.println(solve());
